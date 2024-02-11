@@ -28,7 +28,6 @@ def bass_boost(filepath:str, bass:bool = True, accentuate_db:float = 2, attenuat
         attenuate_db: float
             Amount of boosting in dB
     """
-    filename = '_'.join(filepath.split('.')[:-1]) # remove .mp3
     print('Sampling the Audio...')
     sample = AudioSegment.from_mp3(filepath)
     print('Filtering the Audio...')
@@ -39,12 +38,4 @@ def bass_boost(filepath:str, bass:bool = True, accentuate_db:float = 2, attenuat
     print('Boosting...')
     boosted = (sample - attenuate_db).overlay(filtered + accentuate_db)
     print('Writing the file...')
-    if bass:
-        boosted.export(filename + '_bass_boost.mp3',format = 'mp3')
-    else:
-        boosted.export(filename + '_treble_boost.mp3',format = 'mp3')
-
-
-
-if __name__ == "__main__":
-    bass_boost('No_Roots.mp3', bass = True, accentuate_db = 2, attenuate_db = 0)
+    boosted.export('script/cleaned.wav',format = 'wav')

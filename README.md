@@ -39,3 +39,8 @@ https://librosa.org/librosa_gallery/auto_examples/plot_vocal_separation.html - v
 AWS
 
 https://chat.openai.com/share/eae29660-a3b0-4c0d-a42b-348f8bbbe3bc - VPC and IoT
+
+
+Next steps:
+
+https://github.com/dimasikson/Audio-cleaning-with-Deep-Learning - Deeplearning

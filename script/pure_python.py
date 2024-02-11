@@ -5,18 +5,14 @@ from pydub import AudioSegment, effects
 import requests
 import os
 import time
-
-data, samplerate = sf.read('script/cleaned.wav')
-
-
-n = len(data)
-Fs = samplerate
+from bass_treble_boost import bass_boost
 
 
 
 
 def apply_normalizarion():
     data, samplerate = sf.read('script/cleaned.wav')
+    n = len(data)
     ch1 = np.array([data[i][0] for i in range(n)])
     ch2 = np.array([data[i][1] for i in range(n)])
 
@@ -91,6 +87,10 @@ def noise_reduction():
         f.write(get_file.content)
 
 
-# noise_reduction()
+noise_reduction()
+apply_normalizarion()
+apply_audio_compressor()
+bass_boost('script/cleaned.wav', bass = False, accentuate_db = 2, attenuate_db = 0)
+bass_boost('script/cleaned.wav', bass = True, accentuate_db = 2, attenuate_db = 0)
 apply_normalizarion()
 apply_audio_compressor()
